@@ -37,8 +37,19 @@ void onoff(){
   delay(500);
 
  }
+}
 
-}  
+void trail(){
+
+} 
+
+void doubletrail(){
+  
+}
+
+void inout(){
+  
+}
 
 
 
@@ -46,5 +57,8 @@ void loop() {
   // put your main code here, to run repeatedly:
   
 onoff();
+trail();
+doubletrail();
+inout();
 
   }
