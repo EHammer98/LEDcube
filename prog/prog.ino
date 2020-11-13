@@ -54,7 +54,7 @@ int teller = 0;
 
       digitalWrite(latchClock, HIGH);
 
-      delay(300);
+      delay(400);
 
       teller = teller * 2;
 
@@ -70,7 +70,7 @@ int teller = 0;
 
       digitalWrite(latchClock, HIGH);
 
-      delay(300);
+      delay(400);
 
       teller = teller / 2;
       
@@ -92,7 +92,7 @@ void doubletrail(){
 
       digitalWrite(latchClock, HIGH);
 
-      delay(300);
+      delay(400);
 
       teller = teller * 2;
       
@@ -106,7 +106,7 @@ void doubletrail(){
 
       digitalWrite(latchClock, HIGH);
 
-      delay(300);
+      delay(400);
 
       teller = teller / 2;
       
@@ -115,7 +115,82 @@ void doubletrail(){
 }
 
 void inout(){
-  
+
+  int teller = 0;
+
+      for(int hulp = 0; hulp < 2; hulp++){
+
+        teller = 129;
+        
+        digitalWrite(latchClock, LOW);
+
+        shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+        digitalWrite(latchClock, HIGH);
+
+        delay(400);
+
+        teller = 66;
+        
+        digitalWrite(latchClock, LOW);
+
+        shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+        digitalWrite(latchClock, HIGH);
+
+        delay(400);
+
+        teller = 36;
+        
+        digitalWrite(latchClock, LOW);
+
+        shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+        digitalWrite(latchClock, HIGH);
+
+        delay(400);
+
+        teller = 24;
+        
+        digitalWrite(latchClock, LOW);
+
+        shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+        digitalWrite(latchClock, HIGH);
+
+        delay(400);
+
+        teller = 36;
+        
+        digitalWrite(latchClock, LOW);
+
+        shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+        digitalWrite(latchClock, HIGH);
+
+        delay(400);
+
+        teller = 66;
+        
+        digitalWrite(latchClock, LOW);
+
+        shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+        digitalWrite(latchClock, HIGH);
+
+        delay(400);
+
+        teller = 129;
+        
+        digitalWrite(latchClock, LOW);
+
+        shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+        digitalWrite(latchClock, HIGH);
+
+        delay(400);
+
+      }
 }
 
 
