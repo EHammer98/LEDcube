@@ -7,6 +7,7 @@ void setup() {
 pinMode(serialData, OUTPUT);
 pinMode(shiftClock, OUTPUT);
 pinMode(latchClock, OUTPUT);
+Serial.begin(9600);
 
 }
 
@@ -41,6 +42,39 @@ void onoff(){
 
 void trail(){
 
+
+  for(int hulp = 0; hulp < 2; hulp++){
+    int teller = 1;
+    for(int hulp2 = 0; hulp2 < 8; hulp2++){
+      
+      digitalWrite(latchClock, LOW);
+
+      shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+      digitalWrite(latchClock, HIGH);
+
+      delay(300);
+
+      teller = teller * 2;
+
+      Serial.print("loop");
+      
+    }
+    teller = 128;
+    for(int hulp3 = 0; hulp3 <= 8; hulp3++){
+
+      digitalWrite(latchClock, LOW);
+
+      shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+      digitalWrite(latchClock, HIGH);
+
+      delay(300);
+
+      teller = teller / 2;
+      
+    }     
+  }      
 } 
 
 void doubletrail(){
