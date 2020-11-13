@@ -1,6 +1,7 @@
 int serialData = 6;
 int shiftClock = 7;
 int latchClock = 8; 
+//test
 
 void setup() {
   // put your setup code here, to run once:
