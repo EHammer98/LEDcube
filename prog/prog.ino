@@ -42,9 +42,10 @@ void onoff(){
 
 void trail(){
 
+int teller = 0;
 
   for(int hulp = 0; hulp < 2; hulp++){
-    int teller = 1;
+    teller = 1;
     for(int hulp2 = 0; hulp2 < 8; hulp2++){
       
       digitalWrite(latchClock, LOW);
@@ -78,7 +79,39 @@ void trail(){
 } 
 
 void doubletrail(){
-  
+
+  int teller = 0;
+
+  for(int hulp = 0; hulp < 2; hulp++){
+    teller = 3;
+    for(int hulp2 = 0; hulp2 < 8; hulp2++){
+      
+      digitalWrite(latchClock, LOW);
+
+      shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+      digitalWrite(latchClock, HIGH);
+
+      delay(300);
+
+      teller = teller * 2;
+      
+    }
+    teller = 192;
+    for(int hulp3 = 0; hulp3 <= 8; hulp3++){
+
+      digitalWrite(latchClock, LOW);
+
+      shiftOut(serialData, shiftClock, MSBFIRST, teller);
+
+      digitalWrite(latchClock, HIGH);
+
+      delay(300);
+
+      teller = teller / 2;
+      
+    }     
+  } 
 }
 
 void inout(){
