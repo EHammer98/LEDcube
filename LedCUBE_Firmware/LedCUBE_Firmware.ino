@@ -116,21 +116,26 @@ void walkTowards()
   for(int count0 = 0; count0 < 1; count0++){
     bytesInDEC = 1;
     bytesInDEC1 = 128;
-    for(int count0 = 0; count0 < 8; count0++){
+    for(int count2 = 0; count2 < 8; count2++){
+  
+    for(int count0 = 0; count0 < 50; count0++){
       digitalWrite(enBOT, HIGH);
       digitalWrite(enTOP, HIGH);
       writeShiftRegister(bytesInDEC);
       digitalWrite(enTOP, LOW);
-      delay(400);
-      bytesInDEC = bytesInDEC * 2;    
+      delay(5);
+    
             digitalWrite(enBOT, HIGH);
       digitalWrite(enTOP, HIGH);
       writeShiftRegister(bytesInDEC1);
       digitalWrite(enBOT, LOW);
-      delay(400);
-      bytesInDEC1 = bytesInDEC1 / 2; 
+      delay(5);
+
     }
-        bytesInDEC1 = 1;
+       bytesInDEC = bytesInDEC * 2;
+       bytesInDEC1 = bytesInDEC1 / 2;
+    }
+    bytesInDEC1 = 1;
     bytesInDEC = 128;
     for(int count0 = 0; count0 < 8; count0++){
       //digitalWrite(enBOT, HIGH);
