@@ -8,7 +8,9 @@ int laag3 = A3;
 int laag4 = A2;
 int thsecond = 500;
 // change laag 3&4
-
+int binc = 0;
+int binc2 = 0;
+//
 void setup()
 {
   pinMode(serialData, OUTPUT);
@@ -28,11 +30,13 @@ void setup()
 void loop()
 {
   //test();
-  cirkel();
-  opzij();
-  achter();
-  lagen();
+  //cirkel();
+  //opzij();
+  //achter();
+  //lagen();
   //alles();
+  //bin();
+  bin2();
 }
  void test(){
   for (int count = 0; count<2; count++){
@@ -234,6 +238,66 @@ void alles(){
     digitalWrite(laag4, HIGH);
     delay(thsecond);
   }
+
+void bin(){
+  binc=0;
+  writeShiftRegisterCascade(0,0);
+  while(binc<512){
+    binc++;
+    if(binc<128){
+      writeShiftRegisterCascade(binc,binc);
+        digitalWrite(laag1, HIGH);
+        digitalWrite(laag2, LOW);
+        digitalWrite(laag3, LOW);
+        digitalWrite(laag4, LOW);
+      delay(thsecond);
+      }
+    if(binc>128 && binc<256){
+      writeShiftRegisterCascade(binc-128,binc-128);
+        digitalWrite(laag1, HIGH);
+        digitalWrite(laag2, HIGH);
+        digitalWrite(laag3, LOW);
+        digitalWrite(laag4, LOW);
+      delay(thsecond);
+      }
+    if(binc>256 && binc<384){
+      writeShiftRegisterCascade(binc-256,binc-256);
+        digitalWrite(laag1, HIGH);
+        digitalWrite(laag2, HIGH);
+        digitalWrite(laag3, HIGH);
+        digitalWrite(laag4, LOW);
+      delay(thsecond);
+      }
+    if(binc>384 && binc<512){
+       writeShiftRegisterCascade(binc-384,binc-384);
+        digitalWrite(laag1, HIGH);
+        digitalWrite(laag2, HIGH);
+        digitalWrite(laag3, HIGH);
+        digitalWrite(laag4, HIGH);
+      delay(thsecond);
+      }
+    }
+  }
+
+  void bin2(){
+  binc=0;
+  binc2=0;
+  writeShiftRegisterCascade(0,0);
+  while(binc2<256){
+    binc++;
+    if(binc<256){
+      writeShiftRegisterCascade(binc,binc2);
+      delay(thsecond);
+      }
+    if(binc>256){
+      binc=0;
+      binc2++;
+      writeShiftRegisterCascade(binc,binc2);
+      delay(thsecond);
+      }
+    }
+  }
+
 // change bytes1/2 if necesarry in the shiftout var.
 void writeShiftRegisterCascade(int bytes1, int bytes2)
 {
