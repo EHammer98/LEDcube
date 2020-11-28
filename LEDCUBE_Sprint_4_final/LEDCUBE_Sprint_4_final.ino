@@ -6,7 +6,7 @@ int laag1 = A0;
 int laag2 = A1;
 int laag3 = A3;
 int laag4 = A2;
-int thsecond = 250;
+int thsecond = 500;
 // change laag 3&4
 
 void setup()
