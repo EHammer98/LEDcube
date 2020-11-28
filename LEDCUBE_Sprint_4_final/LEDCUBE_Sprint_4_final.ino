@@ -1,14 +1,13 @@
 // new output ports 
 int serialData = 9;
 int shiftClock = 8;
-int latchClock = 13; // david 13
-// EDIT these Elwin ^^
+int latchClock = 13; // david 13, otherwise 7
 int laag1 = A0;
 int laag2 = A1;
 int laag3 = A3;
 int laag4 = A2;
 int thsecond = 250;
-
+// change laag 3&4
 
 void setup()
 {
