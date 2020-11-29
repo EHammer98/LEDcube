@@ -1,13 +1,13 @@
 // new output ports 
 int serialData = 9;
 int shiftClock = 8;
-int latchClock = 13; // david 13, otherwise 7
+int latchClock = 7; // david 13, otherwise 7
 int laag1 = A0;
 int laag2 = A1;
-int laag3 = A3;
-int laag4 = A2;
+int laag3 = A2;
+int laag4 = A3;
 int thsecond = 500;
-// change laag 3&4
+// change laag 3&4 verschillend
 int binc = 0;
 int binc2 = 0;
 //
@@ -30,13 +30,13 @@ void setup()
 void loop()
 {
   //test();
-  //cirkel();
-  //opzij();
-  //achter();
-  //lagen();
+  cirkel();
+  opzij();
+  achter();
+  lagen();
   //alles();
   //bin();
-  bin2();
+  //bin2();
 }
  void test(){
   for (int count = 0; count<2; count++){
@@ -242,9 +242,9 @@ void alles(){
 void bin(){
   binc=0;
   writeShiftRegisterCascade(0,0);
-  while(binc<512){
+  while(binc<2048){
     binc++;
-    if(binc<128){
+    if(binc<256){
       writeShiftRegisterCascade(binc,binc);
         digitalWrite(laag1, HIGH);
         digitalWrite(laag2, LOW);
@@ -252,24 +252,24 @@ void bin(){
         digitalWrite(laag4, LOW);
       delay(thsecond);
       }
-    if(binc>128 && binc<256){
-      writeShiftRegisterCascade(binc-128,binc-128);
+    if(binc>256 && binc<512){
+      writeShiftRegisterCascade(binc-256,binc-256);
         digitalWrite(laag1, HIGH);
         digitalWrite(laag2, HIGH);
         digitalWrite(laag3, LOW);
         digitalWrite(laag4, LOW);
       delay(thsecond);
       }
-    if(binc>256 && binc<384){
-      writeShiftRegisterCascade(binc-256,binc-256);
+    if(binc>512 && binc<1024){
+      writeShiftRegisterCascade(binc-512,binc-512);
         digitalWrite(laag1, HIGH);
         digitalWrite(laag2, HIGH);
         digitalWrite(laag3, HIGH);
         digitalWrite(laag4, LOW);
       delay(thsecond);
       }
-    if(binc>384 && binc<512){
-       writeShiftRegisterCascade(binc-384,binc-384);
+    if(binc>1024 && binc<2048){
+       writeShiftRegisterCascade(binc-1024,binc-1024);
         digitalWrite(laag1, HIGH);
         digitalWrite(laag2, HIGH);
         digitalWrite(laag3, HIGH);
