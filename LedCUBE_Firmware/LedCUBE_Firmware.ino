@@ -4,9 +4,9 @@ int shiftClock = 8;
 int latchClock = 7; // david 13, otherwise 7
 int laag1 = A0;
 int laag2 = A1;
-int laag3 = A2;
-int laag4 = A3;
-int thsecond = 500;
+int laag3 = A3;
+int laag4 = A2;
+int thsecond = 100;
 // change laag 3&4 verschillend
 int binc = 0;
 int binc2 = 0;
@@ -26,18 +26,21 @@ void setup()
   digitalWrite(laag4, HIGH);
   Serial.begin(9600);
 }
-// cirkel, opzij, achter, lagen
+
+// cirkel, opzij, achter, lagen, spin
 void loop()
 {
-  //test();
+  test();
   cirkel();
   opzij();
   achter();
   lagen();
-  //alles();
+  alles();
+  spin();
   //bin();
   //bin2();
 }
+
  void test(){
   for (int count = 0; count<2; count++){
     digitalWrite(laag1, HIGH);
@@ -45,198 +48,322 @@ void loop()
     digitalWrite(laag3, HIGH);
     digitalWrite(laag4, HIGH);
     writeShiftRegisterCascade(1,0);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(2,0);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(4,0);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(8,0);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(16,0);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(32,0);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(64,0);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(128,0);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(0,1);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(0,2);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(0,4);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(0,8);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(0,16);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(0,32);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(0,64);
-    delay(thsecond);
+    delay(thsecond*2);
     writeShiftRegisterCascade(0,128);
-    delay(thsecond);
+    delay(thsecond*2);
     }
   }
 
-void cirkel()
-{
+void cirkel(){
   digitalWrite(laag1, HIGH);
   digitalWrite(laag2, HIGH);
   digitalWrite(laag3, HIGH);
   digitalWrite(laag4, HIGH);
-  writeShiftRegisterCascade(136,136);
-  delay(thsecond);
+
+  for( int i =0; i <= thsecond; i++){
+  writeShiftRegisterCascade(136,136); //17.17
+  delay(2);
+  //delay(thsecond);
+  }
   
   for (int count = 0; count<2; count++){
-    digitalWrite(laag1, HIGH);
+    /*digitalWrite(laag1, HIGH);
     digitalWrite(laag2, HIGH);
     digitalWrite(laag3, HIGH);
-    digitalWrite(laag4, HIGH);
-    writeShiftRegisterCascade(128,200);
-    delay(thsecond);
+    digitalWrite(laag4, HIGH);*/
+    
+    for(int i = 0; i <= thsecond; i++){
+      writeShiftRegisterCascade(128,200); //16.49
+      delay(1);
+      writeShiftRegisterCascade(128,200);
+      delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(0,232); //0.113
+    delay(1);
     writeShiftRegisterCascade(0,232);
-    delay(thsecond);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(0,240); //0.240
+    delay(1);
     writeShiftRegisterCascade(0,240);
-    delay(thsecond);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(0,113); //0.232
+    delay(1);
     writeShiftRegisterCascade(0,113);
-    delay(thsecond);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(16,49); //128,200
+    delay(1);
     writeShiftRegisterCascade(16,49);
-    delay(thsecond);
-    writeShiftRegisterCascade(17,17);
-    delay(thsecond);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(17,17); //136
+    delay(2);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(19,1); //140.8
+    delay(1);
     writeShiftRegisterCascade(19,1);
-    delay(thsecond);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(23,0); // 142.0
+    delay(1);
     writeShiftRegisterCascade(23,0);
-    delay(thsecond);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(15,0); // 15.0
+    delay(1);
     writeShiftRegisterCascade(15,0);
-    delay(thsecond);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(142,0); //23.0
+    delay(1);
     writeShiftRegisterCascade(142,0);
-    delay(thsecond);
+    delay(1);
+    }
+    
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(140,8); //19.1
+    delay(1);
     writeShiftRegisterCascade(140,8);
-    delay(thsecond);
-    writeShiftRegisterCascade(136,136);
-    delay(thsecond);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(136,136); //17.17
+    delay(2);
+    }
     }
 }
 
 void opzij(){
-    digitalWrite(laag1, HIGH);
-    digitalWrite(laag2, HIGH);
-    digitalWrite(laag3, HIGH);
-    digitalWrite(laag4, HIGH);
-    writeShiftRegisterCascade(136,136);
-    delay(thsecond);
+    //digitalWrite(laag1, HIGH);
+    //digitalWrite(laag2, HIGH);
+    //digitalWrite(laag3, HIGH);
+    //digitalWrite(laag4, HIGH);
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(136,136); //17
+    delay(2);
+    }
+    //delay(thsecond);
   for (int count = 0; count<2; count++){
    
-    digitalWrite(laag1, HIGH);
-    digitalWrite(laag2, HIGH);
-    digitalWrite(laag3, HIGH);
-    digitalWrite(laag4, HIGH);
-    writeShiftRegisterCascade(68,68);
-    delay(thsecond);
-    writeShiftRegisterCascade(34,34);
-    delay(thsecond);
-    writeShiftRegisterCascade(17,17);
-    delay(thsecond);
-    writeShiftRegisterCascade(34,34);
-    delay(thsecond);
-    writeShiftRegisterCascade(68,68);
-    delay(thsecond);
-    writeShiftRegisterCascade(136,136);
-    delay(thsecond);
+    //digitalWrite(laag1, HIGH);
+    //digitalWrite(laag2, HIGH);
+    //digitalWrite(laag3, HIGH);
+    //digitalWrite(laag4, HIGH);
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(68,68); //34
+    delay(2);
+    }
+
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(34,34); //68
+    delay(2);
+    }
+
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(17,17); //136
+    delay(2);
+    }
+    
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(34,34); //68
+    delay(2);
+    }
+    
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(68,68); //34
+    delay(2);
+    }
+    
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(136,136); //17
+    delay(2);
+    }   
   }
 }
 
 void achter(){
-    digitalWrite(laag1, HIGH);
-    digitalWrite(laag2, HIGH);
-    digitalWrite(laag3, HIGH);
-    digitalWrite(laag4, HIGH);
-    writeShiftRegisterCascade(0,240);
-    delay(thsecond);
+    //digitalWrite(laag1, HIGH);
+    //digitalWrite(laag2, HIGH);
+    //digitalWrite(laag3, HIGH);
+    //digitalWrite(laag4, HIGH);
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(0,48); //.240
+    delay(1);
+    writeShiftRegisterCascade(0,192);
+    delay(1);
+    }
+    //delay(thsecond);
   for (int count = 0; count<2; count++){
-    digitalWrite(laag1, HIGH);
-    digitalWrite(laag2, HIGH);
-    digitalWrite(laag3, HIGH);
-    digitalWrite(laag4, HIGH);
-    writeShiftRegisterCascade(0,15);
-    delay(thsecond);
-    writeShiftRegisterCascade(240,0);
-    delay(thsecond);
-    writeShiftRegisterCascade(15,0);
-    delay(thsecond);
-    writeShiftRegisterCascade(240,0);
-    delay(thsecond);
-    writeShiftRegisterCascade(0,15);
-    delay(thsecond);
-    writeShiftRegisterCascade(0,240);
-    delay(thsecond);
+    //digitalWrite(laag1, HIGH);
+    //digitalWrite(laag2, HIGH);
+    //digitalWrite(laag3, HIGH);
+    //digitalWrite(laag4, HIGH);
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(0,12); //.15
+    delay(1);
+    writeShiftRegisterCascade(0,3);
+    delay(1);
+    }
+
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(48,0); //240.
+    delay(1);
+    writeShiftRegisterCascade(192,0);
+    delay(1);
+    }
+    
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(12,0); //15.
+    delay(1);
+    writeShiftRegisterCascade(3,0);
+    delay(1);
+    }
+    
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(48,0); //240.
+    delay(1);
+    writeShiftRegisterCascade(192,0);
+    delay(1);
+    }
+    
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(0,12); //.15
+    delay(1);
+    writeShiftRegisterCascade(0,3);
+    delay(1);
+    }
+    
+    for( int i =0; i <= thsecond; i++){
+    writeShiftRegisterCascade(0,48); //.240
+    delay(1);
+    writeShiftRegisterCascade(0,192);
+    delay(1);
+    }
   }
 }
 
 void lagen(){
-    writeShiftRegisterCascade(255,255);
+    //writeShiftRegisterCascade(255,255);
     digitalWrite(laag1, LOW);
     digitalWrite(laag2, LOW);
     digitalWrite(laag3, LOW);
     digitalWrite(laag4, LOW);
-    
-    digitalWrite(laag1, HIGH);
-    delay(thsecond);
-  for (int count = 0; count<2; count++){
-    writeShiftRegisterCascade(255,255);
-    digitalWrite(laag1, LOW);
-    digitalWrite(laag2, LOW);
-    digitalWrite(laag3, LOW);
-    digitalWrite(laag4, LOW);
-    
-    digitalWrite(laag1, LOW);
-    delay(1);
-    digitalWrite(laag2, HIGH);
-    delay(thsecond);
-    
-    digitalWrite(laag2, LOW);
-    delay(1);
-    digitalWrite(laag3, HIGH);
-    delay(thsecond);
-    
-    digitalWrite(laag3, LOW);
-    delay(1);
-    digitalWrite(laag4, HIGH);
-    delay(thsecond);
-    
-    digitalWrite(laag4, LOW);
-    delay(1);
-    digitalWrite(laag3, HIGH);
-    delay(thsecond);
 
-    digitalWrite(laag3, LOW);
-    delay(1);
-    digitalWrite(laag2, HIGH);
-    delay(thsecond);
+      digitalWrite(laag1, HIGH);
+      for(int j = 0; j <= thsecond*2.5; j++){
+        laagCascade();
+      }
+      digitalWrite(laag1, LOW);
 
-    digitalWrite(laag2, LOW);
-    delay(1);
+    for(int i = 0; i < 2; i++){
 
-    digitalWrite(laag1, HIGH);
-    delay(thsecond);
+      
+      digitalWrite(laag2, HIGH);
+      for(int j = 0; j <= thsecond*2.5; j++){
+        laagCascade();
+      }
+      digitalWrite(laag2, LOW);
+
+      
+      digitalWrite(laag3, HIGH);
+      for(int j = 0; j <= thsecond*2.5; j++){
+        laagCascade();
+      }
+      digitalWrite(laag3, LOW);
+
+      
+      digitalWrite(laag4, HIGH);
+      for(int j = 0; j <= thsecond*2.5; j++){
+        laagCascade();
+      }
+      digitalWrite(laag4, LOW);
+
+      digitalWrite(laag3, HIGH);
+      for(int j = 0; j <= thsecond*2.5; j++){
+        laagCascade();
+      }
+      digitalWrite(laag3, LOW);
+
+      digitalWrite(laag2, HIGH);
+      for(int j = 0; j <= thsecond*2.5; j++){
+        laagCascade();
+      }
+      digitalWrite(laag2, LOW);
+
+      digitalWrite(laag1, HIGH);
+      for(int j = 0; j <= thsecond*2.5; j++){
+        laagCascade();
+      }
+      digitalWrite(laag1, LOW);
+
+    }
   }
-}
 
 void alles(){
+    
+    for(int count=0; count<5; count++){
     writeShiftRegisterCascade(255,255);
     digitalWrite(laag1, LOW);
     digitalWrite(laag2, LOW);
     digitalWrite(laag3, LOW);
     digitalWrite(laag4, LOW);
 
-    delay(thsecond);
+    delay(thsecond*4);
     digitalWrite(laag1, HIGH);
     digitalWrite(laag2, HIGH);
     digitalWrite(laag3, HIGH);
     digitalWrite(laag4, HIGH);
-    delay(thsecond);
+    delay(thsecond*4);
+    }
   }
 
 void bin(){
@@ -250,7 +377,7 @@ void bin(){
         digitalWrite(laag2, LOW);
         digitalWrite(laag3, LOW);
         digitalWrite(laag4, LOW);
-      delay(thsecond);
+      delay(thsecond*2);
       }
     if(binc>256 && binc<512){
       writeShiftRegisterCascade(binc-256,binc-256);
@@ -258,7 +385,7 @@ void bin(){
         digitalWrite(laag2, HIGH);
         digitalWrite(laag3, LOW);
         digitalWrite(laag4, LOW);
-      delay(thsecond);
+      delay(thsecond*2);
       }
     if(binc>512 && binc<1024){
       writeShiftRegisterCascade(binc-512,binc-512);
@@ -266,7 +393,7 @@ void bin(){
         digitalWrite(laag2, HIGH);
         digitalWrite(laag3, HIGH);
         digitalWrite(laag4, LOW);
-      delay(thsecond);
+      delay(thsecond*2);
       }
     if(binc>1024 && binc<2048){
        writeShiftRegisterCascade(binc-1024,binc-1024);
@@ -274,7 +401,7 @@ void bin(){
         digitalWrite(laag2, HIGH);
         digitalWrite(laag3, HIGH);
         digitalWrite(laag4, HIGH);
-      delay(thsecond);
+      delay(thsecond*2);
       }
     }
   }
@@ -287,16 +414,78 @@ void bin(){
     binc++;
     if(binc<256){
       writeShiftRegisterCascade(binc,binc2);
-      delay(thsecond);
+      delay(thsecond*2);
       }
     if(binc>256){
       binc=0;
       binc2++;
       writeShiftRegisterCascade(binc,binc2);
-      delay(thsecond);
+      delay(thsecond*2);
       }
     }
   }
+
+  void spin(){
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(72,18);
+    delay(2);
+    }
+
+    for(int i = 0; i <2; i++){
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(192,12);
+    delay(1);
+    writeShiftRegisterCascade(48,3);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(33,132);
+    delay(2);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(68,68);
+    delay(1);
+    writeShiftRegisterCascade(34,34);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(72,18);
+    delay(2);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(192,12);
+    delay(1);
+    writeShiftRegisterCascade(48,3);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(33,132);
+    delay(2);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(68,68);
+    delay(1);
+    writeShiftRegisterCascade(34,34);
+    delay(1);
+    }
+
+    for(int i = 0; i <= thsecond; i++){
+    writeShiftRegisterCascade(72,18);
+    delay(2);
+    }
+    
+  }
+
+ }
+
 
 // change bytes1/2 if necesarry in the shiftout var.
 void writeShiftRegisterCascade(int bytes1, int bytes2)
@@ -305,14 +494,53 @@ void writeShiftRegisterCascade(int bytes1, int bytes2)
   digitalWrite(laag2, LOW);
   digitalWrite(laag3, LOW);
   digitalWrite(laag4, LOW);
+  
   digitalWrite(latchClock, LOW);
   shiftOut(serialData, shiftClock, MSBFIRST, bytes2);
   digitalWrite(latchClock, HIGH);
   digitalWrite(latchClock, LOW);
   shiftOut(serialData, shiftClock, MSBFIRST, bytes1);
   digitalWrite(latchClock, HIGH);
+
   digitalWrite(laag1, HIGH);
   digitalWrite(laag2, HIGH);
   digitalWrite(laag3, HIGH);
   digitalWrite(laag4, HIGH);
+}
+
+void laagCascade()
+{
+
+    digitalWrite(latchClock, LOW);
+    shiftOut(serialData, shiftClock, MSBFIRST, 17);
+    digitalWrite(latchClock, HIGH);
+    digitalWrite(latchClock, LOW);
+    shiftOut(serialData, shiftClock, MSBFIRST, 17);
+    digitalWrite(latchClock, HIGH);
+    delay(0.5);
+    
+    digitalWrite(latchClock, LOW);
+    shiftOut(serialData, shiftClock, MSBFIRST, 68);
+    digitalWrite(latchClock, HIGH);
+    digitalWrite(latchClock, LOW);
+    shiftOut(serialData, shiftClock, MSBFIRST, 68);
+    digitalWrite(latchClock, HIGH);
+    delay(0.5);
+    
+    digitalWrite(latchClock, LOW);
+    shiftOut(serialData, shiftClock, MSBFIRST, 34);
+    digitalWrite(latchClock, HIGH);
+    digitalWrite(latchClock, LOW);
+    shiftOut(serialData, shiftClock, MSBFIRST, 34);
+    digitalWrite(latchClock, HIGH);
+    delay(0.5);
+    
+    digitalWrite(latchClock, LOW);
+    shiftOut(serialData, shiftClock, MSBFIRST, 136);
+    digitalWrite(latchClock, HIGH);
+    digitalWrite(latchClock, LOW);
+    shiftOut(serialData, shiftClock, MSBFIRST, 136);
+    digitalWrite(latchClock, HIGH);
+    delay(0.5);
+
 }
